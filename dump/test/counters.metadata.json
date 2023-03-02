@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_"},{"v":2,"key":{"id":1,"reference_value":1},"name":"id_1_reference_value_1","background":true,"unique":true}],"uuid":"d9c60b8369aa4443b247806680c6077c"}

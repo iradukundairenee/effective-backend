@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A.R.I PDF</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,600&family=Roboto+Condensed:wght@700&display=swap');
+
+    @font-face {
+      font-family: 'Poppins';
+      src: url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,600&family=Roboto+Condensed:wght@700&display=swap');
+    }
+
+    table {
+      box-shadow: '0px 0px 14px #c9d7df33';
+      border-radius: '10px';
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #fafafa;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 'Medium';
+      font-size: 18px;
+    }
+
+    th {
+      color: #fff;
+      padding: 15px 5px;
+      font-size: 10px;
+      background: #8967fc;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+    }
+
+    tr {
+      text-align: center;
+    }
+
+    td {
+      color: #7d7d7d;
+      padding: 10px 5px;
+      font-size: 10px;
+      font-family: 'Poppins';
+      font-weight: 'Medium';
+      padding-left: 30px;
+      border-bottom: none;
+    }
+
+    .footerCell {
+      color: #303030;
+      font-size: 10px;
+      background: #eff0f6;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+      border-bottom: none;
+    }
+
+    .totalRow {
+      color: #8967fc;
+      font-size: 10px;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+    }
+
+    .table-border {
+      border: 1px solid #dddddd;
+    }
+
+    .table-collapse {
+      border-collapse: collapse;
+    }
+
+    .white-bg {
+      background-color: #8967fc;
+      color: #fff;
+    }
+
+    .card {
+      box-shadow: 0px 0px 14px #c9d7df33;
+      margin-top: 30px;
+      border-radius: 10px;
+    }
+
+    .card-title {
+      color: #303030;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+    }
+
+    .card-content {
+      color: #7d7d7d;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: 'Poppins';
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <table width="100%">
+      <td align="left">
+        <span>Proposal #{{proposalNumber}}</span>
+      </td>
+      <td align="right">
+        <img src="data:image/png;base64,{{logo}}" alt="Cube logo" width="100px" />
+        <br />
+        <span>{{currencyCompanyName}}</span><br />
+        <span>{{currencyCompanyAddress}}</span><br />
+        <span>{{currencyCompanyCity}}</span><br />
+        <span>{{currencyCompanyCountry}}</span> <br />
+        <br />
+        <span>{{currencyCompanyUrl}}</span><br />
+      </td>
+      </tr>
+      </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <hr />
+        </td>
+      </tr>
+      <tr>
+        <td align="left">
+          <span><b>Proposal To.</b></span><br />
+          <span>{{userFullName}}</span><br />
+          <span>{{companyName}}</span><br />
+          <span>{{companyAddress}}</span><br />
+          <span>{{companyCity}}</span><br />
+          <span>{{companyCountry}}</span><br />
+          <span>Phone: {{companyPhone}}</span><br />
+          <span>Email: {{companyEmail}}</span>
+        </td>
+        <td align="right">
+          <table class="table-collapse">
+            <tr class="table-border">
+              <td class="table-border white-bg">Proposal #</td>
+              <td class="table-border">{{proposalNumber}}</td>
+            </tr>
+            <tr class="table-border">
+              <td class="table-border white-bg">Status</td>
+              <td class="table-border">{{status}}</td>
+            </tr>
+            <tr>
+              <td class="table-border white-bg">Proposal Date</td>
+              <td class="table-border">{{proposalDate}}</td>
+            </tr>
+            <tr class="table-border">
+              <td class="table-border white-bg">Due Date</td>
+              <td class="table-border">{{due_date}}</td>
+            </tr>
+            <tr class="table-border">
+              <td class="table-border white-bg">Amount Due</td>
+              <td class="table-border">{{currency}} {{itemsTotal}}</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each items}}
+              <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.quantity}}</td>
+                <td>{{this.currency}} {{this.price}}</td>
+                <td>{{this.currency}} {{this.total}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td class="footerCell"></td>
+                <td class="footerCell">SubTotal</td>
+                <td class="footerCell"></td>
+                <td class="footerCell">{{currency}} {{subTotal}}</td>
+              </tr>
+              <tr>
+                <td class="footerCell"></td>
+                <td class="footerCell">Tax: {{taxName}}</td>
+                <td class="footerCell">{{taxAmount}}%</td>
+                <td class="footerCell">{{currency}} {{taxTotal}}</td>
+              </tr>
+              <tr>
+                <td class="footerCell"></td>
+                <td class="footerCell">Discount</td>
+                <td class="footerCell">{{discountFlat}} {{discount}} {{discountPercentage}}</td>
+                <td class="footerCell">{{currency}} {{itemsDiscount}}</td>
+              </tr>
+              <tr>
+                <td class="totalRow"></td>
+                <td class="totalRow">Total</td>
+                <td class="totalRow"></td>
+                <td class="totalRow">{{currency}} {{itemsTotal}}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div class="card" style="page-break-before: always;">
+      <p class="card-title">Proposal text</p>
+      <p class="card-content">{{description}}</p>
+    </div>
+    <div class="card" style="page-break-before: always;">
+      <p class="card-title">License Agreement</p>
+      <p class="card-content">
+        The following License Agreement is a legal agreement between
+        you or the employer or other entity on whose behalf you are
+        entering this agreement (“you” or “Licensee”) and Augmented
+        Reality Innovations Inc. (“arinnovations.io, ARII”).
+        <br />
+        <br />
+        This agreement sets forth the rights and obligations with
+        respect to any content licensed by you and applies to
+        licenses issued via the web. By entering into this License
+        Agreement, you verify that your country of residence is the
+        same as your billing address and confirm that you have the
+        capacity to form a contract under its local laws.
+        <br />
+        <br />
+        ARII reserves the right to modify the License Agreement at
+        any time. Prior to such changes becoming effective, ARII
+        will use reasonable efforts to notify you of any such change
+        via email using the email address on file. Modifications to
+        the License Agreement will only apply to future purchases.
+        By licensing content following such modifications you agree
+        to be bound by the modified License Agreement. Please
+        revisit the License Agreement when you purchase any content
+        licenses to confirm any modifications to the License
+        Agreement.
+        <br />
+        <br />
+        Definitions “3D Models” means any 3-dimensional, digital
+        representation of a physical product.
+        <br />
+        <br />
+        “Images” means any 2 dimensional representation of a
+        physical product including photographs, 2D renders, vectors,
+        drawings, and the like.
+        <br />
+        <br />
+        “Videos” means any moving images, animations, films, videos
+        or other audio/visual representations.
+        <br />
+        <br />
+        “Licensed Content” means any 3D Models, Images, and Videos
+        which are licensed to the Licensee by ARII under the terms
+        of this License Agreement. Any reference in this agreement
+        to Licensed Content shall be to each individual item within
+        the Licensed Content and also to the Licensed Content as a
+        whole.
+        <br />
+        <br />
+        “Licensee” means the person or employer or other entity
+        purchasing a license under this License Agreement.
+        <br />
+        <br />
+        “ARII” means Augmented Reality Innovations Incorporated, its
+        parents, affiliates, subsidiaries, co-venturers and licensed
+        affiliates.
+        <br />
+        <br />
+        “Proposal” means the Proposal provided via email by ARII upon
+        order completion that outlines the Licensed Content that is
+        subject to this License Agreement.
+        <br />
+        <br />
+        1. Standard Content License
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

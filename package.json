@@ -1,0 +1,106 @@
+{
+  "name": "cube_backend",
+  "version": "1.0.0",
+  "description": "API for TimeCapsule CRM",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test nyc mocha --require @babel/register 'src/**/**test.js' --timeout 100000 --exit",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls",
+    "start": "npm run build && node dist/server.js",
+    "start:dev": "nodemon --exec babel-node src/server.js",
+    "lint": "./node_modules/.bin/eslint . --ext .js --fix",
+    "build": "babel ./src --out-dir dist",
+    "clean": "rimraf dist",
+    "seed": "./node_modules/.bin/cross-env babel-node ./src/database/seed/seeds.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KitechRW/Kitech_backend.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql"
+  ],
+  "author": "kitech engineers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KitechRW/Kitech_backend/issues"
+  },
+  "homepage": "https://github.com/KitechRW/Kitech_backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/runtime": "^7.12.5",
+    "@maxmind/geoip2-node": "^3.2.0",
+    "@sendgrid/mail": "^7.7.0",
+    "aws-sdk": "^2.1280.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.20.0",
+    "core-js": "^3.15.2",
+    "cors": "^2.8.5",
+    "coveralls": "^3.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.18.1",
+    "express-useragent": "^1.0.15",
+    "helmet": "^4.3.1",
+    "html-pdf": "^3.0.1",
+    "http-status": "^1.5.0",
+    "joi": "^17.3.0",
+    "joi-phone-number": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mobile-detect": "^1.4.5",
+    "moment": "^2.29.1",
+    "mongo-seeding-cli": "^3.7.2",
+    "mongoose": "^5.11.10",
+    "mongoose-sequence": "^5.3.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.8.0",
+    "nodemailer-express-handlebars": "^5.0.0",
+    "nodemon": "^2.0.6",
+    "nvm": "0.0.4",
+    "nyc": "^15.1.0",
+    "pdf-creator-node": "^2.3.5",
+    "phantomjs-prebuilt": "^2.1.16",
+    "puppeteer": "^18.0.5",
+    "regenerator-runtime": "^0.13.7",
+    "stripe": "^11.1.0",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.5",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "faker": "5.1.0",
+    "mocha": "^9.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.74.0"
+  },
+  "nodemonConfig": {
+    "exec": "npm run start:dev",
+    "watch": [
+      "src/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  }
+}

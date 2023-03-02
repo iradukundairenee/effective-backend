@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A.R.I Invoice PDF</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,600&family=Roboto+Condensed:wght@700&display=swap');
+
+    @font-face {
+      font-family: 'Poppins';
+      src: url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,600&family=Roboto+Condensed:wght@700&display=swap');
+    }
+
+    table {
+      box-shadow: '0px 0px 14px #c9d7df33';
+      border-radius: '10px';
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #fafafa;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 'Medium';
+      font-size: 18px;
+    }
+
+    th {
+      color: #fff;
+      padding: 15px 5px;
+      font-size: 10px;
+      background: #8967fc;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+    }
+
+    tr {
+      text-align: center;
+    }
+
+    td {
+      color: #7d7d7d;
+      padding: 10px 5px;
+      font-size: 10px;
+      font-family: 'Poppins';
+      font-weight: 'Medium';
+      padding-left: 30px;
+      border-bottom: none;
+    }
+
+    .footerCell {
+      color: #303030;
+      font-size: 10px;
+      background: #eff0f6;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+      border-bottom: none;
+    }
+
+    .totalRow {
+      color: #8967fc;
+      font-size: 10px;
+      font-family: 'Poppins';
+      font-weight: 'Bold';
+      padding-left: 30px;
+    }
+
+    .table-border {
+      border: 1px solid #dddddd;
+    }
+
+    .table-collapse {
+      border-collapse: collapse;
+    }
+
+    .white-bg {
+      background-color: #8967fc;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <table width="100%">
+      <td align="left">
+        <span>INVOICE #{{invoiceNumber}}</span>
+      </td>
+      <td align="right">
+        <img src="data:image/png;base64,{{logo}}" alt="Cube logo" width="100px" />
+        <br />
+        <span>Augmented Reality Innovations</span><br />
+        <span>80F Centurian Dr. Suite 10,</span><br />
+        <span>Markham, ON L3R-8C1</span><br />
+        <span>Canada</span> <br />
+        <br />
+        <span>www.arinnovations.io</span><br />
+      </td>
+    </tr>
+    </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <hr />
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <span><b>Invoice To.</b></span><br />
+          <span>{{userFullName}}</span><br />
+          <span>{{companyName}}</span><br />
+          <span>{{companyAddress}}</span><br />
+          <span>{{companyCity}}</span><br />
+          <span>{{companyCountry}}</span><br />
+          <span>Phone: {{companyPhone}}</span><br />
+          <span>Email: {{companyEmail}}</span>
+      </td>
+      <td align="right">
+        <table class="table-collapse">
+          <tr class="table-border">
+            <td class="table-border white-bg">INVOICE #</td>
+            <td class="table-border">{{invoiceNumber}}</td>
+          </tr>
+          <tr class="table-border">
+            <td class="table-border white-bg">Status</td>
+            <td class="table-border">{{status}}</td>
+          </tr>
+          <tr>
+            <td class="table-border white-bg">Invoice Date</td>
+            <td class="table-border">{{invoiceDate}}</td>
+          </tr>
+          <tr class="table-border">
+            <td class="table-border white-bg">Due Date</td>
+            <td class="table-border">{{due_date}}</td>
+          </tr>
+          <tr class="table-border">
+            <td class="table-border white-bg">Amount Due</td>
+            <td class="table-border">{{currency}} {{itemsTotal}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each items}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{this.quantity}}</td>
+              <td>{{this.currency}} {{this.price}}</td>
+              <td>{{this.currency}} {{this.total}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="footerCell"></td>
+              <td class="footerCell">SubTotal</td>
+              <td class="footerCell"></td>
+              <td class="footerCell">{{this.currency}} {{subTotal}}</td>
+            </tr>
+            {{#each taxes}}
+            <tr>
+              <td class="footerCell"></td>
+              <td class="footerCell">Tax: {{this.name}}</td>
+              <td class="footerCell">{{this.amount}}%</td>
+              <td class="footerCell">{{this.currency}} {{this.total}}</td>
+            </tr>
+            {{/each}}
+            <tr>
+              <td class="footerCell"></td>
+              <td class="footerCell">Discount</td>
+              <td class="footerCell">{{discountFlat}} {{discount}} {{discountPercentage}}</td>
+              <td class="footerCell">{{currency}} {{itemsDiscount}}</td>
+            </tr>
+            <tr>
+              <td class="totalRow"></td>
+              <td class="totalRow">Total</td>
+              <td class="totalRow"></td>
+              <td class="totalRow">{{currency}} {{itemsTotal}}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

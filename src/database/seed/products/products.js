@@ -1,0 +1,53 @@
+const projects = require('../projects/projects');
+const users = require('../users/users');
+
+module.exports = [
+  {
+    name: 'ARI Building',
+    bgColor: 'white',
+    customer: users[0],
+    project: projects[1],
+    price: '4000',
+    imageIcon: '3d-icon.png',
+    sku: 'UGG-BB-PUR-06',
+    status: 'Public',
+    description: 'Test 3d asset',
+    website: '',
+  },
+  {
+    name: 'KAYA 890',
+    bgColor: 'BLUE',
+    customer: users[1],
+    project: projects[4],
+    price: '4000',
+    imageIcon: '3d-icon.png',
+    sku: 'UGG-BB-PUR-06',
+    status: 'Private',
+    description: 'Test 3d asset',
+    website: '',
+  },
+  {
+    name: 'ARI Building',
+    bgColor: 'white',
+    customer: users[2],
+    project: projects[0],
+    price: '4000',
+    imageIcon: '3d-icon.png',
+    sku: 'UGG-BB-PUR-06',
+    status: 'Public',
+    description: 'Test 3d asset',
+    website: '',
+  },
+  {
+    name: 'OIL_PAINTINGS',
+    bgColor: 'white',
+    customer: users[3],
+    project: projects[2],
+    price: '4000',
+    imageIcon: '3d-icon.png',
+    sku: 'UGG-BB-PUR-06',
+    status: 'Private',
+    description: 'Test 3d asset',
+    website: '',
+  },
+];
